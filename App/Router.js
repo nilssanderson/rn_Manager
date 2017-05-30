@@ -4,6 +4,7 @@ import { Scene, Router, Actions } from 'react-native-router-flux';
 import LoginForm from './Components/LoginForm';
 import EmployeeList from './Components/EmployeeList';
 import EmployeeCreate from './Components/EmployeeCreate';
+import EmployeeEdit from './Components/EmployeeEdit';
 
 
 const RouterComponent = () => {
@@ -22,11 +23,8 @@ const RouterComponent = () => {
                     onRight={() => Actions.employeeCreate()}
                     initial
                 />
-                <Scene
-                    key="employeeCreate"
-                    component={EmployeeCreate}
-                    title="Create Employee"
-                />
+                <Scene key="employeeCreate" component={EmployeeCreate} title="Create Employee" />
+                <Scene key="employeeEdit" component={EmployeeEdit} title="Edit Employee" />
             </Scene>
         </Router>
     );

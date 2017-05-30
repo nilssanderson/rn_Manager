@@ -12,8 +12,8 @@ import {
 
 // by default use initial_state so that we never return undefined or null
 const INITIAL_STATE = {
-  email: '',
-  password: '',
+  email: '', // fill in with real values for development
+  password: '', // fill in with real values for development
   user: null,
   error: '',
   loading: false
