@@ -1,6 +1,7 @@
 
 import _ from 'lodash';
 import React, { Component } from 'react';
+import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Communications from 'react-native-communications';
 import EmployeeForm from './EmployeeForm';
@@ -16,6 +17,9 @@ class EmployeeEdit extends Component {
     _.each(this.props.employee, (value, prop) => {
       this.props.employeeUpdate({ prop, value });
     });
+    
+    // auto saves and navigates the user back
+    Actions.refresh({ onBack: this.onButtonPress.bind(this) });
   }
 
   onButtonPress() {

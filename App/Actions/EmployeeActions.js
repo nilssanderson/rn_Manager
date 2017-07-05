@@ -5,6 +5,7 @@ import {
   EMPLOYEE_UPDATE,
   EMPLOYEE_CREATE,
   EMPLOYEE_SAVE_SUCCESS,
+  EMPLOYEE_DELETE_SUCCESS,
   EMPLOYEES_FETCH_SUCCESS,
 } from './types';
 
@@ -60,11 +61,12 @@ export const employeeSave = ({ name, phone, shift, uid }) => {
 export const employeeDelete = ({ uid }) => {
   const { currentUser } = firebase.auth();
 
-  return () => { // using redux thunk to fake the no return
+  return (dispatch) => { // using redux thunk to fake the no return
     // json datastore path e.g. /users/132r14513/employees/12412412
     firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
       .remove()
       .then(() => {
+        dispatch({ type: EMPLOYEE_DELETE_SUCCESS });
         Actions.employeeList({ type: 'reset' });
       });
   };
